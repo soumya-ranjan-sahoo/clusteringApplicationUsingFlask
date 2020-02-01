@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+<style>
+/*li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #20B2AA;
+}*/
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
+</style>
+<body>
+
+
+<div class="vl">
+<div class="bottomright">
+<img src="/static/logo.png" height="200" width="200">
+</div>
+</div>
+<div id="main">
+	<ul id="nav">
+  <li><a href="/">About</a></li>
+  <li><a class="active" href="upload">Upload</a></li>
+  <li><a  href="cluster">Cluster</a></li>
+  <li><a  href="download" class="inactiveLink" disabled="disabled">Download</a></li>
+  
+</ul>
+
+<h1><p align="center">Upload your file here in xlsx/.csv format</p></h1>
+<form action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" required ="required" accept=".xls,.xlsx,.csv" />
+         <input type = "submit" onclick="$('#loading').show();">
+</form>
+<br>
+
+<!-- <div id="loading" style="display:none;">
+  <img src="/static/ajax-loader.gif" alt="" />
+</div> -->
+{{success_text}}
+<br>
+<div id="loading">
+<form action="http://localhost:5000/summary">
+         <button type="submit">Get Summary</button>
+<div>
+</form>
+<br>
+<div class="table-container">
+
+{% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+{% endfor %}
+
+{% block content %}
+    
+{% endblock %}
+</div>
+
+
+
+</div>
+</div>
+
+
+<div class="footer">
+<p align="center"><a href = "https://www.fuwe.uni-saarland.de/" style="color:white;text-decoration:none">&copy Chair for Functional Materials, Saarland University<a></p>
+</div>
+</body>
+</html>
+

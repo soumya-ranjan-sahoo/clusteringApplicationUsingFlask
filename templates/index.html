@@ -1,0 +1,69 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<style>
+
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
+</style>
+<body>
+
+<div class="bottomright">
+<img src="/static/logo.png" height="200" width="200">
+</div>
+<div class="vl"></div>
+
+
+<div id=main>
+
+<ul id="nav">
+  <li><a class="active" href="/">About</a></li>
+  <li><a href="upload">Upload</a></li>
+  <li><a href="cluster" class="inactiveLink">Cluster</a></li>
+  <li><a href="download" class="inactiveLink" disabled="disabled">Download</a></li>
+  
+</ul>
+
+<article>
+<h1>About</h1>
+<div style="font-family: 'Lucida Grande', 'bitstream vera sans', 'trebuchet ms', sans-serif, verdana; font-size: 12px;">
+<h3 style="margin: 1em 0px 0.5em; font-size: 16px;"><em>ClusterUI:</em>a web tool for clustering multivariate data</h3>
+<p style="margin-bottom: 10px; font-size: 13px;">This is an <a href="https://en.wikipedia.org/wiki/Unsupervised_learning">unsupervised learning</a>
+			web tool 
+			that clusters microstructures in steel based on their physical properties. 
+			You can upload your own data as an Excel or CSV file and get a summary of it under the Upload tab.
+			Different <a href="https://en.wikipedia.org/wiki/Cluster_analysis">clustering algorithms</a> 
+			can be selected under the Cluster tab.
+			You can reduce the dimensionality of the data by selecting 
+			<a href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis (PCA)</a>.</p>
+<p style="margin-bottom: 10px; font-size: 13px;">This web tool is developed as part of the coursework - Software Engineering, 2019 for the Chair for Functional Materials, Saarland University.</p>
+<p style="margin-bottom: 10px; font-size: 13px;">More information on the department can be found on their webpages:&nbsp;<a href="https://www.fuwe.uni-saarland.de/" target="_blank" title="Website of IMI Initiative">https://www.fuwe.uni-saarland.de/</a></p>
+<br>
+<br>
+<p style="margin-bottom: 10px; font-size: 13px;"><img src="/static/uds.png" border="0"  title="uds.png"></p>
+</div>
+</article>
+
+</div>
+</div>
+<div class="footer">
+  <p align="center"><a href = "https://www.fuwe.uni-saarland.de/" style="color:white;text-decoration:none">&copy Chair for Functional Materials, Saarland University<a></p>
+</div>
+</body>
+</html>
+
+
+<!-- {% if not k_text %} -->
+<!-- <h1>Loading</h1> -->
+<!-- {% else %} -->
+<!-- {{k_text}} -->
+<!-- {% endif %} -->

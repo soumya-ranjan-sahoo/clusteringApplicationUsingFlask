@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/style.css">
+
+
+</head>
+<body>
+
+<div class="bottomright">
+<img src="/static/logo.png" height="200" width="200">
+</div>
+<div class="vl"></div>
+<div id=main>
+<ul id="nav">
+  <li><a href="/">Introduction</a></li>
+  <li><a href="upload">Upload</a></li>
+  <li><a  href="cluster">Cluster</a></li>
+  <li><a class="active" href="download">Download</a></li>
+  
+</ul>
+
+<h1><p align="center">Download option goes here</p></h1>
+<br>
+<form action={{ url_for('output_summary') }}>
+         <button type="submit">Get Summary</button>
+</form>
+<br>
+<pre>
+{{output_summary}}
+</pre>
+<br>
+<form action="{{ url_for('download_summary') }}">
+         <button class="btn"><i class="fa fa-download"></i> Download Summary(.txt)</button>
+</form>
+<br>
+<form action="{{ url_for('download_output') }}">
+         <button class="btn"><i class="fa fa-download"></i> Download Clustered File(.xlsx)</button>
+</form>
+<br>
+{{download_text}}
+</div>
+</div>
+<div class="footer">
+<p align="center"><a href = "https://www.fuwe.uni-saarland.de/" style="color:white;text-decoration:none">&copy Chair for Functional Materials, Saarland University<a></p>
+</div>
+</body>
+</html>
+

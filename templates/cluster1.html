@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+</head>
+<style>
+
+    .inactiveLink {
+        pointer-events: none;
+        cursor: default;
+    }
+</style>
+<body>
+
+
+
+    <div class="bottomright">
+        <img src="/static/logo.png" height="200" width="200">
+    </div>
+    <div class="vl"></div>
+    <div id=main>
+
+        <ul id="nav">
+            <li><a href="/">Introduction</a></li>
+            <li><a href="upload">Upload</a></li>
+            <li><a class="active" href="cluster">Cluster</a></li>
+            <li><a href="download" class="inactiveLink">Download</a></li>
+
+        </ul>
+
+        <h1><p align="center">Clustering Algorithms</p></h1>
+
+        <p>
+            {{k_features}}
+        </p>
+
+        <p>Select the clustering algorithm from the drop-down list:</p>
+        <form class="form-inline" method="POST" action="{{ url_for('cluster_k') }}">
+            <select name="algo_select">
+                <br>
+                <option value="k_means">k_means</option>
+                <option value="k_medoids">k_medoids</option>
+                <option value="hierarchical clustering">hierarchical clustering</option>
+                <option value="fuzzy_clustering">fuzzy_clustering</option>
+                <option value="gmm_clustering">gmm_clustering</option>
+            </select>
+            &nbsp &nbsp Number of clusters (between 1 and 50): <input type="number" name="k_select" min="1" max="50">
+            <br><br>
+            <input type="checkbox" name="DR" value="Dimensionality_reduction">
+            Dimensionality Reduction<br><br><br>
+            <input type="submit" onclick="$('#loading').show();">
+        </form>
+        <br>
+        <div id="loading" style="display:none;">
+            <img src="/static/ajax-loader.gif" alt="" />
+        </div>
+        <form action="{{url_for('terminate_clustering') }}">
+            <button type="submit">Terminate Clustering</button>
+        </form>
+        <p>
+            {{algo_text}}
+            <!--</p>
+            <form class="form-inline" method="POST" action="">
+                Select the number of clusters (between 1 and 50): <input type="number" name="k_select" min="1" max="50">
+              <input type="submit">
+            </form>
+            <p>-->
+            {{k_text if k_text else k_loading}}
+        </p>
+    </div>
+    <!-- {% with messages = get_flashed_messages() %} -->
+    <!-- {% if messages %} -->
+    <!-- {% for message in messages %} -->
+    <!-- <div class="alert alert-primary alert-dismissible fade show" role="alert"> -->
+    <!-- <span>{{ message }}</span> -->
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+    <!-- <span aria-hidden="true">&times;</span> -->
+    <!-- </button> -->
+    <!-- </div> -->
+    <!-- {% endfor %} -->
+    <!-- {% endif %} -->
+    <!-- {% endwith %} -->
+
+    <div class="footer">
+        <p align="center"><a href="https://www.fuwe.uni-saarland.de/" style="color:white;text-decoration:none">&copy Chair for Functional Materials, Saarland University<a></p>
+    </div>
+
+</body>
+
+</html>
